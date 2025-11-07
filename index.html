@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Химия 8 класс: Первоначальные химические понятия</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide {
+            display: none;
+            padding: 40px;
+            min-height: 600px;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        h1 {
+            color: #1a2a6c;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #b21f1f;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #b21f1f;
+            margin: 20px 0 15px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #1a2a6c;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .chemical-formula {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #1a2a6c;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        .exercise {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #fdbb2d;
+        }
+        
+        .exercise h3 {
+            color: #b21f1f;
+            margin-top: 0;
+        }
+        
+        .reaction-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .reaction-type {
+            flex: 1;
+            min-width: 200px;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .reaction-type h4 {
+            color: #1a2a6c;
+            margin-bottom: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: #1a2a6c;
+        }
+        
+        button {
+            background: #fdbb2d;
+            color: #1a2a6c;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:hover {
+            background: #b21f1f;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .slide-counter {
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chemical-signs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        
+        .chemical-sign {
+            background: #1a2a6c;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .definition {
+            background: #e6f7ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #1a2a6c;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .important {
+            color: #b21f1f;
+            font-weight: bold;
+        }
+        
+        .conclusion {
+            background: #e6ffe6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2d8b2d;
+        }
+        
+        /* Новые стили для улучшенной версии */
+        .quiz-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #1a2a6c;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .quiz-option {
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background: #e9ecef;
+        }
+        
+        .quiz-option.correct {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .quiz-option.incorrect {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .quiz-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        
+        .quiz-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        
+        .interactive-element {
+            background: #e6f2ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .reaction-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .reaction-component {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .reaction-arrow {
+            font-size: 2rem;
+            color: #1a2a6c;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #1a2a6c;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .reaction-types {
+                flex-direction: column;
+            }
+            
+            .reaction-animation {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Слайд 1: Заголовок -->
+        <div class="slide active" id="slide1">
+            <h1>Химия 8 класс</h1>
+            <h2>Первоначальные химические понятия</h2>
+            <div style="text-align: center; margin: 40px 0;">
+                <div style="font-size: 5rem; color: #1a2a6c;">⚗️</div>
+                <p style="font-size: 1.3rem; margin-top: 20px;">Изучаем основы химии: от веществ до химических реакций</p>
+            </div>
+            <div class="chemical-signs">
+                <div class="chemical-sign">H</div>
+                <div class="chemical-sign">O</div>
+                <div class="chemical-sign">C</div>
+                <div class="chemical-sign">Na</div>
+                <div class="chemical-sign">Cl</div>
+                <div class="chemical-sign">Fe</div>
+            </div>
+            
+            <!-- Интерактивный элемент прогресса -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p style="text-align: center;">Прогресс изучения: <span id="progress-percent">0%</span></p>
+        </div>
+        
+        <!-- Слайд 2: Химические реакции -->
+        <div class="slide" id="slide2">
+            <h1>Химические реакции</h1>
+            <div class="definition">
+                <p><span class="important">Химическая реакция</span> — это явление, при котором одни вещества (реагенты) превращаются в другие (продукты реакции) с новыми свойствами.</p>
+            </div>
+            
+            <h2>Признаки химических реакций:</h2>
+            <ul>
+                <li>Выпадение осадка</li>
+                <li>Изменение цвета</li>
+                <li>Выделение газа</li>
+                <li>Растворение осадка</li>
+                <li>Выделение теплоты и света</li>
+            </ul>
+            
+            <!-- Интерактивный элемент с анимацией -->
+            <div class="interactive-element">
+                <h3>Демонстрация реакции</h3>
+                <div class="reaction-animation">
+                    <div class="reaction-component">
+                        <p>Реагенты</p>
+                        <div style="font-size: 2rem;">🧪</div>
+                    </div>
+                    <div class="reaction-arrow">→</div>
+                    <div class="reaction-component">
+                        <p>Продукты</p>
+                        <div style="font-size: 2rem;">🔥</div>
+                    </div>
+                </div>
+                <button id="demo-reaction" style="margin-top: 15px;">Показать реакцию</button>
+            </div>
+            
+            <div class="exercise">
+                <h3>Упражнение 1</h3>
+                <p>Приведите примеры химических реакций, которые вы наблюдали в повседневной жизни. Какие признаки химических реакций вы заметили?</p>
+            </div>
+        </div>
+        
+        <!-- Слайд 3: Условия протекания реакций -->
+        <div class="slide" id="slide3">
+            <h1>Условия протекания химических реакций</h1>
+            
+            <p>Для протекания химических реакций необходимы определенные условия:</p>
+            <ul>
+                <li>Соприкосновение веществ (контакт реагентов)</li>
+                <li>Нагревание (для многих реакций)</li>
+                <li>Наличие катализаторов (веществ, ускоряющих реакцию)</li>
+                <li>Доступ кислорода (для реакций горения)</li>
+            </ul>
+            
+            <div class="chemical-formula">
+                Пример: S + O<sub>2</sub> → SO<sub>2</sub>
+            </div>
+            
+            <p>Сера горит только при поджигании, несмотря на контакт с кислородом воздуха.</p>
+            
+            <!-- Интерактивный тест -->
+            <div class="quiz-container">
+                <h3>Проверь свои знания</h3>
+                <div class="quiz-question">Какое условие НЕ является необходимым для протекания химических реакций?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Соприкосновение веществ</div>
+                    <div class="quiz-option" data-correct="false">Нагревание</div>
+                    <div class="quiz-option" data-correct="true">Наличие электрического тока</div>
+                    <div class="quiz-option" data-correct="false">Наличие катализатора</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="exercise">
+                <h3>Упражнение 2</h3>
+                <p>Почему для тушения пожара необходимо прекратить доступ кислорода к горящему предмету? Какие способы тушения пожара вы знаете?</p>
+            </div>
+        </div>
+        
+        <!-- Слайд 4: Тепловой эффект реакций -->
+        <div class="slide" id="slide4">
+            <h1>Тепловой эффект химических реакций</h1>
+            
+            <div class="reaction-types">
+                <div class="reaction-type">
+                    <h4>Экзотермические реакции</h4>
+                    <p>Протекают с выделением теплоты</p>
+                    <div style="font-size: 3rem;">🔥</div>
+                    <p>Пример: реакции горения</p>
+                </div>
+                
+                <div class="reaction-type">
+                    <h4>Эндотермические реакции</h4>
+                    <p>Протекают с поглощением теплоты</p>
+                    <div style="font-size: 3rem;">❄️</div>
+                    <p>Пример: разложение веществ при нагревании</p>
+                </div>
+            </div>
+            
+            <div class="chemical-formula">
+                CaCO<sub>3</sub> → CaO + CO<sub>2</sub>↑
+            </div>
+            <p>Реакция разложения известняка является эндотермической.</p>
+            
+            <!-- Интерактивный тест -->
+            <div class="quiz-container">
+                <h3>Проверь свои знания</h3>
+                <div class="quiz-question">Какая из перечисленных реакций является экзотермической?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Разложение воды на водород и кислород</div>
+                    <div class="quiz-option" data-correct="true">Горение метана</div>
+                    <div class="quiz-option" data-correct="false">Фотосинтез</div>
+                    <div class="quiz-option" data-correct="false">Разложение оксида ртути</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="exercise">
+                <h3>Упражнение 3</h3>
+                <p>Приведите по два примера экзотермических и эндотермических реакций. Объясните, где они применяются в быту или технике.</p>
+            </div>
+        </div>
+        
+        <!-- Слайд 5: Химические уравнения -->
+        <div class="slide" id="slide5">
+            <h1>Химические уравнения</h1>
+            
+            <p>Химическое уравнение — это условная запись химической реакции с помощью химических формул и математических знаков.</p>
+            
+            <div class="chemical-formula">
+                4P + 5O<sub>2</sub> = 2P<sub>2</sub>O<sub>5</sub>
+            </div>
+            
+            <p>Химические уравнения должны соответствовать <span class="important">закону сохранения массы веществ</span>, открытому М.В. Ломоносовым и А. Лавуазье:</p>
+            <p style="text-align: center; font-weight: bold;">Масса реагентов = Масса продуктов реакции</p>
+            
+            <!-- Интерактивный элемент для расстановки коэффициентов -->
+            <div class="interactive-element">
+                <h3>Практика: расстановка коэффициентов</h3>
+                <p>Расставьте коэффициенты в уравнении:</p>
+                <div class="chemical-formula" id="balance-equation">
+                    Al + S → Al<sub>2</sub>S<sub>3</sub>
+                </div>
+                <div style="margin: 15px 0;">
+                    <button id="check-balance">Проверить</button>
+                    <button id="show-balance">Показать ответ</button>
+                </div>
+                <div id="balance-feedback" style="display: none; padding: 10px; border-radius: 5px; margin-top: 10px;"></div>
+            </div>
+            
+            <div class="exercise">
+                <h3>Упражнение 4</h3>
+                <p>Расставьте коэффициенты в схемах реакций:</p>
+                <p>а) Al + S → Al<sub>2</sub>S<sub>3</sub></p>
+                <p>б) H<sub>2</sub>O<sub>2</sub> → H<sub>2</sub>O + O<sub>2</sub>↑</p>
+                <p>в) Fe(OH)<sub>3</sub> → Fe<sub>2</sub>O<sub>3</sub> + H<sub>2</sub>O</p>
+            </div>
+        </div>
+        
+        <!-- Слайд 6: Типы химических реакций -->
+        <div class="slide" id="slide6">
+            <h1>Типы химических реакций</h1>
+            
+            <div class="reaction-types">
+                <div class="reaction-type">
+                    <h4>Соединения</h4>
+                    <p>A + B → AB</p>
+                    <div class="chemical-formula" style="margin: 10px 0; padding: 8px;">
+                        2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O
+                    </div>
+                    <p>Из нескольких веществ образуется одно</p>
+                </div>
+                
+                <div class="reaction-type">
+                    <h4>Разложения</h4>
+                    <p>AB → A + B</p>
+                    <div class="chemical-formula" style="margin: 10px 0; padding: 8px;">
+                        2H<sub>2</sub>O → 2H<sub>2</sub> + O<sub>2</sub>
+                    </div>
+                    <p>Из одного вещества образуется несколько</p>
+                </div>
+            </div>
+            
+            <div class="reaction-types">
+                <div class="reaction-type">
+                    <h4>Замещения</h4>
+                    <p>A + BC → AC + B</p>
+                    <div class="chemical-formula" style="margin: 10px 0; padding: 8px;">
+                        Zn + 2HCl → ZnCl<sub>2</sub> + H<sub>2</sub>↑
+                    </div>
+                    <p>Простое вещество замещает элемент в сложном</p>
+                </div>
+                
+                <div class="reaction-type">
+                    <h4>Обмена</h4>
+                    <p>AB + CD → AD + CB</p>
+                    <div class="chemical-formula" style="margin: 10px 0; padding: 8px;">
+                        NaOH + HCl → NaCl + H<sub>2</sub>O
+                    </div>
+                    <p>Вещества обмениваются составными частями</p>
+                </div>
+            </div>
+            
+            <!-- Интерактивный тест -->
+            <div class="quiz-container">
+                <h3>Проверь свои знания</h3>
+                <div class="quiz-question">К какому типу относится реакция: 2KClO<sub>3</sub> → 2KCl + 3O<sub>2</sub>?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Соединения</div>
+                    <div class="quiz-option" data-correct="true">Разложения</div>
+                    <div class="quiz-option" data-correct="false">Замещения</div>
+                    <div class="quiz-option" data-correct="false">Обмена</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </div>
+        
+        <!-- Слайд 7: Упражнения по типам реакций -->
+        <div class="slide" id="slide7">
+            <h1>Упражнения: Типы химических реакций</h1>
+            
+            <div class="exercise">
+                <h3>Упражнение 5</h3>
+                <p>Определите тип химической реакции:</p>
+                <p>а) 2Mg + O<sub>2</sub> → 2MgO</p>
+                <p>б) CaCO<sub>3</sub> → CaO + CO<sub>2</sub>↑</p>
+                <p>в) Zn + 2HCl → ZnCl<sub>2</sub> + H<sub>2</sub>↑</p>
+                <p>г) AgNO<sub>3</sub> + NaCl → AgCl↓ + NaNO<sub>3</sub></p>
+            </div>
+            
+            <div class="exercise">
+                <h3>Упражнение 6</h3>
+                <p>Составьте уравнения химических реакций по описанию:</p>
+                <p>а) При взаимодействии оксида железа(III) с водородом образуется железо и вода.</p>
+                <p>б) Хлор взаимодействует с алюминием с образованием хлорида алюминия.</p>
+                <p>в) При разложении гидроксида меди(II) образуются оксид меди(II) и вода.</p>
+            </div>
+            
+            <!-- Интерактивный элемент для классификации реакций -->
+            <div class="interactive-element">
+                <h3>Классификация реакций</h3>
+                <p>Перетащите уравнения реакций в соответствующие категории:</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0;">
+                    <div style="flex: 1; min-width: 200px; background: #f0f8ff; padding: 15px; border-radius: 10px;">
+                        <h4>Соединения</h4>
+                        <div class="drag-target" data-type="compound" style="min-height: 100px; border: 2px dashed #1a2a6c; border-radius: 5px; padding: 10px;"></div>
+                    </div>
+                    <div style="flex: 1; min-width: 200px; background: #fff0f0; padding: 15px; border-radius: 10px;">
+                        <h4>Разложения</h4>
+                        <div class="drag-target" data-type="decomposition" style="min-height: 100px; border: 2px dashed #b21f1f; border-radius: 5px; padding: 10px;"></div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                    <div class="drag-item" data-type="compound" data-equation="2H₂ + O₂ → 2H₂O">2H₂ + O₂ → 2H₂O</div>
+                    <div class="drag-item" data-type="decomposition" data-equation="2H₂O → 2H₂ + O₂">2H₂O → 2H₂ + O₂</div>
+                    <div class="drag-item" data-type="compound" data-equation="2Mg + O₂ → 2MgO">2Mg + O₂ → 2MgO</div>
+                    <div class="drag-item" data-type="decomposition" data-equation="2KClO₃ → 2KCl + 3O₂">2KClO₃ → 2KCl + 3O₂</div>
+                </div>
+                <button id="check-classification" style="margin-top: 15px;">Проверить</button>
+            </div>
+        </div>
+        
+        <!-- Слайд 8: Катализаторы -->
+        <div class="slide" id="slide8">
+            <h1>Катализаторы</h1>
+            
+            <div class="definition">
+                <p><span class="important">Катализаторы</span> — это вещества, ускоряющие химические реакции, но не входящие в состав продуктов реакции.</p>
+            </div>
+            
+            <p>Пример: разложение пероксида водорода</p>
+            <div class="chemical-formula">
+                2H<sub>2</sub>O<sub>2</sub> → 2H<sub>2</sub>O + O<sub>2</sub>↑
+            </div>
+            <p>Без катализатора реакция идет медленно, с катализатором (MnO<sub>2</sub>) — быстро.</p>
+            
+            <!-- Интерактивный тест -->
+            <div class="quiz-container">
+                <h3>Проверь свои знания</h3>
+                <div class="quiz-question">Что происходит с катализатором в ходе химической реакции?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Он расходуется</div>
+                    <div class="quiz-option" data-correct="false">Он превращается в продукт реакции</div>
+                    <div class="quiz-option" data-correct="true">Он не расходуется и не изменяется</div>
+                    <div class="quiz-option" data-correct="false">Он замедляет реакцию</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="exercise">
+                <h3>Упражнение 7</h3>
+                <p>Где в быту или промышленности применяются катализаторы? Приведите примеры.</p>
+            </div>
+        </div>
+        
+        <!-- Слайд 9: Заключение -->
+        <div class="slide" id="slide9">
+            <h1>Выводы</h1>
+            
+            <div class="conclusion">
+                <p>Мы изучили основные химические понятия:</p>
+                <ul>
+                    <li>Химические реакции и их признаки</li>
+                    <li>Условия протекания реакций</li>
+                    <li>Тепловой эффект реакций</li>
+                    <li>Химические уравнения и закон сохранения массы</li>
+                    <li>Типы химических реакций</li>
+                    <li>Катализаторы</li>
+                </ul>
+            </div>
+            
+            <div class="exercise">
+                <h3>Итоговое упражнение</h3>
+                <p>Подготовьте сообщение на одну из тем:</p>
+                <ul>
+                    <li>История открытия закона сохранения массы веществ</li>
+                    <li>Роль катализаторов в промышленности</li>
+                    <li>Химические реакции в повседневной жизни</li>
+                </ul>
+            </div>
+            
+            <!-- Итоговый тест -->
+            <div class="quiz-container">
+                <h3>Итоговый тест</h3>
+                <div class="quiz-question">Какое из утверждений о химических реакциях НЕВЕРНО?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Химические реакции сопровождаются изменением состава веществ</div>
+                    <div class="quiz-option" data-correct="false">В ходе химических реакций соблюдается закон сохранения массы</div>
+                    <div class="quiz-option" data-correct="true">Все химические реакции протекают с выделением теплоты</div>
+                    <div class="quiz-option" data-correct="false">Химические реакции могут ускоряться катализаторами</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <div style="font-size: 4rem;">🧪</div>
+                <p style="font-size: 1.2rem; margin-top: 15px;">Химия — это увлекательная наука о превращениях веществ!</p>
+            </div>
+        </div>
+        
+        <!-- Элементы управления -->
+        <div class="controls">
+            <button id="prevBtn">← Назад</button>
+            <div class="slide-counter">Слайд <span id="currentSlide">1</span> из <span id="totalSlides">9</span></div>
+            <button id="nextBtn">Вперед →</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            
+            document.getElementById('totalSlides').textContent = totalSlides;
+            
+            function showSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (n + totalSlides) % totalSlides;
+                slides[currentSlide].classList.add('active');
+                document.getElementById('currentSlide').textContent = currentSlide + 1;
+                
+                // Обновление прогресса
+                updateProgress();
+            }
+            
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                showSlide(currentSlide + 1);
+            });
+            
+            document.getElementById('prevBtn').addEventListener('click', function() {
+                showSlide(currentSlide - 1);
+            });
+            
+            // Добавляем поддержку клавиатуры
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    showSlide(currentSlide + 1);
+                } else if (e.key === 'ArrowLeft') {
+                    showSlide(currentSlide - 1);
+                }
+            });
+            
+            // Функция обновления прогресса
+            function updateProgress() {
+                const progress = Math.round(((currentSlide + 1) / totalSlides) * 100);
+                document.getElementById('progress-bar').style.width = `${progress}%`;
+                document.getElementById('progress-percent').textContent = `${progress}%`;
+            }
+            
+            // Инициализация прогресса
+            updateProgress();
+            
+            // Обработчики для интерактивных элементов
+            
+            // Демонстрация реакции
+            document.getElementById('demo-reaction')?.addEventListener('click', function() {
+                const animation = document.querySelector('.reaction-animation');
+                animation.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    animation.style.transform = 'scale(1)';
+                }, 500);
+            });
+            
+            // Обработчики для тестов
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const isCorrect = this.getAttribute('data-correct') === 'true';
+                    const feedback = this.parentElement.nextElementSibling;
+                    
+                    // Сброс предыдущих ответов
+                    this.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Показ правильного/неправильного ответа
+                    if (isCorrect) {
+                        this.classList.add('correct');
+                        feedback.textContent = 'Правильно!';
+                        feedback.className = 'quiz-feedback correct';
+                    } else {
+                        this.classList.add('incorrect');
+                        feedback.textContent = 'Неверно. Попробуйте еще раз.';
+                        feedback.className = 'quiz-feedback incorrect';
+                        
+                        // Показ правильного ответа
+                        const correctOption = this.parentElement.querySelector('.quiz-option[data-correct="true"]');
+                        correctOption.classList.add('correct');
+                    }
+                });
+            });
+            
+            // Обработчики для расстановки коэффициентов
+            document.getElementById('check-balance')?.addEventListener('click', function() {
+                const feedback = document.getElementById('balance-feedback');
+                feedback.textContent = 'Проверка... Правильный ответ: 2Al + 3S → Al₂S₃';
+                feedback.style.display = 'block';
+                feedback.style.background = '#fff9e6';
+                feedback.style.color = '#856404';
+            });
+            
+            document.getElementById('show-balance')?.addEventListener('click', function() {
+                const equation = document.getElementById('balance-equation');
+                equation.innerHTML = '2Al + 3S → Al<sub>2</sub>S<sub>3</sub>';
+                const feedback = document.getElementById('balance-feedback');
+                feedback.textContent = 'Верно расставлены коэффициенты!';
+                feedback.style.display = 'block';
+                feedback.style.background = '#d4edda';
+                feedback.style.color = '#155724';
+            });
+            
+            // Базовая реализация перетаскивания для классификации реакций
+            let draggedItem = null;
+            
+            document.querySelectorAll('.drag-item').forEach(item => {
+                item.setAttribute('draggable', 'true');
+                
+                item.addEventListener('dragstart', function() {
+                    draggedItem = this;
+                    setTimeout(() => this.style.opacity = '0.5', 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    this.style.opacity = '1';
+                    draggedItem = null;
+                });
+            });
+            
+            document.querySelectorAll('.drag-target').forEach(target => {
+                target.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                
+                target.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    if (draggedItem) {
+                        this.appendChild(draggedItem);
+                    }
+                });
+            });
+            
+            document.getElementById('check-classification')?.addEventListener('click', function() {
+                let allCorrect = true;
+                
+                document.querySelectorAll('.drag-target').forEach(target => {
+                    const type = target.getAttribute('data-type');
+                    const items = target.querySelectorAll('.drag-item');
+                    
+                    items.forEach(item => {
+                        if (item.getAttribute('data-type') !== type) {
+                            allCorrect = false;
+                            item.style.border = '2px solid red';
+                        } else {
+                            item.style.border = '2px solid green';
+                        }
+                    });
+                });
+                
+                if (allCorrect) {
+                    alert('Поздравляем! Все реакции правильно классифицированы.');
+                } else {
+                    alert('Некоторые реакции размещены неправильно. Попробуйте еще раз.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
